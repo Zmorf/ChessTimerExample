@@ -34,14 +34,30 @@ public class MainActivity extends AppCompatActivity {
         this.mChessTimer = new ChessTimer(new ChessTimer.ChessTimerListener() {
             @Override
             public void onPlayerOneTimeUpdate(long time) {
-                mPlayerOne.setText("Millisec: " + String.valueOf(time));
+                int sec = (int)time/1000;
+                int millisec = (int)time%1000;
+                int minute = 0;
+                if(sec > 60)
+                {
+                    minute = sec / 60;
+                    sec = sec%60;
+                }
+                mPlayerOne.setText(String.valueOf(minute) + ":" + String.valueOf(sec) + ":" + String.valueOf(millisec));
                 mPlayerOne.setBackgroundColor(Color.parseColor("#00ff00"));
                 mPlayerTwo.setBackgroundColor(Color.TRANSPARENT);
             }
 
             @Override
             public void onPlayerTwoTimeUpdate(long time) {
-                mPlayerTwo.setText("Millisec: " + String.valueOf(time));
+                int sec = (int)time/1000;
+                int millisec = (int)time%1000;
+                int minute = 0;
+                if(sec > 60)
+                {
+                    minute = sec / 60;
+                    sec = sec%60;
+                }
+                mPlayerTwo.setText(String.valueOf(minute) + ":" + String.valueOf(sec) + ":" + String.valueOf(millisec));
                 mPlayerOne.setBackgroundColor(Color.TRANSPARENT);
                 mPlayerTwo.setBackgroundColor(Color.parseColor("#00ff00"));
             }
